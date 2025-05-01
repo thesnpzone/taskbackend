@@ -61,6 +61,10 @@ connectDB();
 
 app.use("/api/students", studentRoutes);
 
+app.get("/", (req, res) => {
+    res.send("Hello from the serversss!");
+});
+
 // Start Server
 
 app.listen(PORT, () => {

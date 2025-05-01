@@ -37,18 +37,7 @@ function checkEmailDomain(email) {
     });
 }
 
-async function verifyEmailExists(email) {
-    return new Promise((resolve) => {
-        emailExistence.check(email, (err, exists) => {
-            if (err) {
-                console.error("Error verifying email existence:", err);
-                resolve(false);
-            } else {
-                resolve(exists);
-            }
-        });
-    });
-}
+
 
 
 
@@ -106,10 +95,7 @@ router.post("/register", async(req, res) => {
             return res.status(400).json({ message: "Invalid email domain" });
         }
 
-        const emailExists = await verifyEmailExists(email);
-        if (!emailExists) {
-            return res.status(400).json({ message: "Email does not exist" });
-        }
+
 
         const otpCode = generateOtp();
 
