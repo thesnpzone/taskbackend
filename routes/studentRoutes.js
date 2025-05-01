@@ -215,12 +215,12 @@ router.post("/login", async(req, res) => {
 
         // Set JWT token as an HttpOnly cookie
         res.cookie("studentSession", token, {
-            maxAge: 7200000, // 2 hours
+            maxAge: 7200000,
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-            domain: process.env.NODE_ENV === "production" ? "" : "localhost",
-            path: "/",
+            secure: true,
+            sameSite: "None",
+            path: "/"
+
         });
 
         console.log(token);
